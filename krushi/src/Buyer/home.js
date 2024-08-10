@@ -69,6 +69,7 @@ const Navbar = () => {
             <ul className="nav-links" style={{ marginRight: 50 }}>
                 <li style={{ margin: 20 }}><Link to="/">Home</Link></li>
                 <li style={{ margin: 20 }}><Link to="/about">About Us</Link></li>
+                <li style={{ margin: 20 }}><Link to="/bid">Bid</Link></li>
                 <li style={{ margin: 20 }}><Link to="/contact">Contact</Link></li>
                 <li style={{ margin: 20 }}><Link to="/profile">Profile</Link></li>
                 <img src={buyer} style={{ height: 50, width: 50, marginLeft: 20 }}></img>
