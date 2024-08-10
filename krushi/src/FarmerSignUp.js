@@ -181,147 +181,155 @@ function FarmerSignUp() {
         console.log('Farmer Details:', { firstname, lastname, email, contactNumber, password, city, state });
     };
 
-    return(
+    return (
         <div className="MainSignup">
             <div className="form-box">
                 <h2>KRUSHI</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="input-box">
-                        <span className="icon">
-                            {/* SVG for First Name */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
-                                <path d="M12 14a4 4 0 0 1-4-4V7a4 4 0 0 1 8 0v3a4 4 0 0 1-4 4z" />
-                                <path d="M4 22h16a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z" />
-                            </svg>
-                        </span>
-                        <input
-                            type="text"
-                            value={firstname}
-                            onChange={(e) => setFirstname(e.target.value)}
-                            required
-                            placeholder=" "
-                        />
-                        <label>First Name</label>
+                    <div className="row">
+                        <div className="input-box">
+                            <span className="icon">
+                                {/* SVG for First Name */}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
+                                    <path d="M12 14a4 4 0 0 1-4-4V7a4 4 0 0 1 8 0v3a4 4 0 0 1-4 4z" />
+                                    <path d="M4 22h16a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z" />
+                                </svg>
+                            </span>
+                            <input
+                                type="text"
+                                value={firstname}
+                                onChange={(e) => setFirstname(e.target.value)}
+                                required
+                                placeholder=" "
+                            />
+                            <label>First Name</label>
+                        </div>
+                        <div className="input-box">
+                            <span className="icon">
+                                {/* SVG for Last Name */}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
+                                    <path d="M12 14a4 4 0 0 1-4-4V7a4 4 0 0 1 8 0v3a4 4 0 0 1-4 4z" />
+                                    <path d="M4 22h16a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z" />
+                                </svg>
+                            </span>
+                            <input
+                                type="text"
+                                value={lastname}
+                                onChange={(e) => setLastname(e.target.value)}
+                                required
+                                placeholder=" "
+                            />
+                            <label>Last Name</label>
+                        </div>
                     </div>
-                    <div className="input-box">
-                        <span className="icon">
-                            {/* SVG for Last Name */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
-                                <path d="M12 14a4 4 0 0 1-4-4V7a4 4 0 0 1 8 0v3a4 4 0 0 1-4 4z" />
-                                <path d="M4 22h16a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z" />
-                            </svg>
-                        </span>
-                        <input
-                            type="text"
-                            value={lastname}
-                            onChange={(e) => setLastname(e.target.value)}
-                            required
-                            placeholder=" "
-                        />
-                        <label>Last Name</label>
+                    <div className="row">
+                        <div className="input-box">
+                            <span className="icon">
+                                {/* SVG for Email */}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail">
+                                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                                    <path d="M22 7L13.03 12.7a1.94 1.94 0 01-2.06 0L2 7" />
+                                </svg>
+                            </span>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                placeholder=" "
+                            />
+                            <label>Email</label>
+                        </div>
+                        <div className="input-box">
+                            <span className="icon">
+                                {/* SVG for Phone Number */}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </span>
+                            <input
+                                type="tel"
+                                value={contactNumber}
+                                onChange={(e) => setContactNumber(e.target.value)}
+                                required
+                                placeholder=" "
+                            />
+                            <label>Contact Number</label>
+                        </div>
                     </div>
-                    <div className="input-box">
-                        <span className="icon">
-                            {/* SVG for Email */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail">
-                                <rect width="20" height="16" x="2" y="4" rx="2" />
-                                <path d="M22 7L13.03 12.7a1.94 1.94 0 01-2.06 0L2 7" />
-                            </svg>
-                        </span>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            placeholder=" "
-                        />
-                        <label>Email</label>
+                    <div className="row">
+                        <div className="input-box">
+                            <span className="icon">
+                                {/* SVG for Password */}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                                </svg>
+                            </span>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                placeholder=" "
+                            />
+                            <label>Password</label>
+                        </div>
+                        <div className="input-box">
+                            <span className="icon">
+                                {/* SVG for Confirm Password */}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                                </svg>
+                            </span>
+                            <input
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
+                                placeholder=" "
+                            />
+                            <label>Confirm Password</label>
+                        </div>
                     </div>
-                    <div className="input-box">
-                        <span className="icon">
-                            {/* SVG for Phone Number */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                        </span>
-                        <input
-                            type="tel"
-                            value={contactNumber}
-                            onChange={(e) => setContactNumber(e.target.value)}
-                            required
-                            placeholder=" "
-                        />
-                        <label>Contact Number</label>
-                    </div>
-                    <div className="input-box">
-                        <span className="icon">
-                            {/* SVG for Password */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
-                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-                                <path d="M7 11V7a5 5 0 0110 0v4" />
-                            </svg>
-                        </span>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            placeholder=" "
-                        />
-                        <label>Password</label>
-                    </div>
-                    <div className="input-box">
-                        <span className="icon">
-                            {/* SVG for Confirm Password */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
-                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-                                <path d="M7 11V7a5 5 0 0110 0v4" />
-                            </svg>
-                        </span>
-                        <input
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                            placeholder=" "
-                        />
-                        <label>Confirm Password</label>
-                    </div>
-                    <div className="input-box">
-                        <select
-                            value={state}
-                            onChange={handleStateChange}
-                            required
-                        >
-                            <option value="" disabled>Select State</option>
-                            {Object.keys(stateCityMapping).map((state) => (
-                                <option key={state} value={state}>
-                                    {state}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="input-box">
-                        <select
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            required
-                            disabled={!state}
-                        >
-                            <option value="" disabled>Select City</option>
-                            {stateCityMapping[state]?.map((city) => (
-                                <option key={city} value={city}>
-                                    {city}
-                                </option>
-                            ))}
-                        </select>
+                    <div className="row">
+                        <div className="input-box">
+                            <select
+                                value={state}
+                                onChange={handleStateChange}
+                                required
+                            >
+                                <option value="" disabled>Select State</option>
+                                {Object.keys(stateCityMapping).map((state) => (
+                                    <option key={state} value={state}>
+                                        {state}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="input-box">
+                            <select
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                required
+                                disabled={!state}
+                            >
+                                <option value="" disabled>Select City</option>
+                                {stateCityMapping[state]?.map((city) => (
+                                    <option key={city} value={city}>
+                                        {city}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                     <button className="btn" type="submit" disabled={!isFormValid}>
                         Sign Up
                     </button>
                     <div className="login-register">
-            <p>Do you have an account? <a href="#" className="login-link">Login</a></p>
-          </div>
+                        <p>Do you have an account? <a href="#" className="login-link">Login</a></p>
+                    </div>
                 </form>
             </div>
         </div>
