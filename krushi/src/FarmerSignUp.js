@@ -236,6 +236,9 @@ function FarmerSignUp() {
                         </select>
                     </div>
                     <button className="btn" type="submit">Sign Up</button>
+                    <div className="login-register">
+            <p>Do you have an account? <a href="#" className="login-link">Login</a></p>
+          </div>
                 </form>
             </div>
         </div>
