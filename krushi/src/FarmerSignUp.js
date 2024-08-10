@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './FarmerSignUp.css';
 
 const stateCityMapping = {
@@ -142,8 +142,30 @@ function FarmerSignUp() {
     const [email, setEmail] = useState('');
     const [contactNumber, setContactNumber] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
+
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    useEffect(() => {
+        const checkFormValidity = () => {
+            setIsFormValid(
+                firstname &&
+                lastname &&
+                email &&
+                contactNumber &&
+                password &&
+                confirmPassword &&
+                city &&
+                state &&
+                password === confirmPassword
+            );
+        };
+        checkFormValidity();
+    }, [firstname, lastname, email, contactNumber, password, confirmPassword, city, state]);
 
     const handleStateChange = (e) => {
         setState(e.target.value);
@@ -152,17 +174,55 @@ function FarmerSignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Farmer Details:', { email, contactNumber, password, city, state });
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+        console.log('Farmer Details:', { firstname, lastname, email, contactNumber, password, city, state });
     };
 
-    return (
+    return(
         <div className="MainSignup">
             <div className="form-box">
                 <h2>KRUSHI</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
                         <span className="icon">
-                            {/* Inline SVG for Email */}
+                            {/* SVG for First Name */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
+                                <path d="M12 14a4 4 0 0 1-4-4V7a4 4 0 0 1 8 0v3a4 4 0 0 1-4 4z" />
+                                <path d="M4 22h16a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z" />
+                            </svg>
+                        </span>
+                        <input
+                            type="text"
+                            value={firstname}
+                            onChange={(e) => setFirstname(e.target.value)}
+                            required
+                            placeholder=" "
+                        />
+                        <label>First Name</label>
+                    </div>
+                    <div className="input-box">
+                        <span className="icon">
+                            {/* SVG for Last Name */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user">
+                                <path d="M12 14a4 4 0 0 1-4-4V7a4 4 0 0 1 8 0v3a4 4 0 0 1-4 4z" />
+                                <path d="M4 22h16a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6H8a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z" />
+                            </svg>
+                        </span>
+                        <input
+                            type="text"
+                            value={lastname}
+                            onChange={(e) => setLastname(e.target.value)}
+                            required
+                            placeholder=" "
+                        />
+                        <label>Last Name</label>
+                    </div>
+                    <div className="input-box">
+                        <span className="icon">
+                            {/* SVG for Email */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail">
                                 <rect width="20" height="16" x="2" y="4" rx="2" />
                                 <path d="M22 7L13.03 12.7a1.94 1.94 0 01-2.06 0L2 7" />
@@ -179,7 +239,10 @@ function FarmerSignUp() {
                     </div>
                     <div className="input-box">
                         <span className="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            {/* SVG for Phone Number */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
                         </span>
                         <input
                             type="tel"
@@ -191,12 +254,13 @@ function FarmerSignUp() {
                         <label>Contact Number</label>
                     </div>
                     <div className="input-box">
-                    <span className="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
-                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0110 0v4" />
-              </svg>
-            </span>
+                        <span className="icon">
+                            {/* SVG for Password */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0110 0v4" />
+                            </svg>
+                        </span>
                         <input
                             type="password"
                             value={password}
@@ -205,6 +269,23 @@ function FarmerSignUp() {
                             placeholder=" "
                         />
                         <label>Password</label>
+                    </div>
+                    <div className="input-box">
+                        <span className="icon">
+                            {/* SVG for Confirm Password */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0110 0v4" />
+                            </svg>
+                        </span>
+                        <input
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                            placeholder=" "
+                        />
+                        <label>Confirm Password</label>
                     </div>
                     <div className="input-box">
                         <select
@@ -235,7 +316,9 @@ function FarmerSignUp() {
                             ))}
                         </select>
                     </div>
-                    <button className="btn" type="submit">Sign Up</button>
+                    <button className="btn" type="submit" disabled={!isFormValid}>
+                        Sign Up
+                    </button>
                     <div className="login-register">
             <p>Do you have an account? <a href="#" className="login-link">Login</a></p>
           </div>
