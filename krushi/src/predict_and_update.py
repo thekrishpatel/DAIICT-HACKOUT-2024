@@ -4,9 +4,9 @@ import pandas as pd
 import lightgbm as lgb
 
 # Load the model, scaler, and column names
-model = joblib.load('model/model.pkl')
-scaler = joblib.load('model/scaler.pkl')
-columns = joblib.load('model/columns.pkl')
+model = joblib.load('src/model/model.pkl')
+scaler = joblib.load('src/model/scaler.pkl')
+columns = joblib.load('src/model/columns.pkl')
 
 # Setup MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')

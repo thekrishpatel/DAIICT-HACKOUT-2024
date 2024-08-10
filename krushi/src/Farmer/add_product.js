@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './Add_product.css';
 
 const AddProduct = () => {
@@ -21,6 +22,8 @@ const AddProduct = () => {
         Farm_Size: '',
     });
 
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -29,13 +32,16 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Send data to the backend to store in MongoDB
+            // Send data to the backend to store in MongoDB and trigger the script
             const response = await axios.post('http://localhost:5000/store', formData);
-            alert('Product data stored successfully. Predicting price...');
+            alert(response.data.message); // Show the response from the server
 
-            // After storing, you might want to fetch the predicted price
+            // Fetch the predicted price
             const predictionResponse = await axios.get(`http://localhost:5000/predict/${response.data._id}`);
             alert(`Predicted Price: ${predictionResponse.data.predictedPrice}`);
+
+            // Redirect to home page
+            navigate('/');
         } catch (error) {
             console.error("Error handling request", error);
         }
