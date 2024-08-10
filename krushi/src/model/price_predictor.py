@@ -1,49 +1,51 @@
 import pandas as pd
-import random
+import lightgbm as lgb
+from sklearn.preprocessing import StandardScaler
 import joblib
 
-# Load the trained model
-model = joblib.load('src/model/polynomial_price_predictor.pkl')
+# Load the model, scaler, and column names
+model = joblib.load('src/model/model.pkl')
+scaler = joblib.load('src/model/scaler.pkl')
+columns = joblib.load('src/model/columns.pkl')
 
-def predict_price(state, product, year):
-    # Generate random data for the other features
-    production = random.randint(500, 5000)
-    consumption = random.randint(300, 4500)
-    rainfall = round(random.uniform(500, 1500), 2)
-    temperature = round(random.uniform(15, 35), 2)
-    fertilizer_usage = round(random.uniform(50, 300), 2)
-    irrigated_area = round(random.uniform(10, 90), 2)
-    pesticide_usage = round(random.uniform(5, 50), 2)
-    soil_quality = round(random.uniform(1, 10), 2)
-    market_demand = round(random.uniform(50, 150), 2)
-    government_support = round(random.uniform(0, 5000), 2)
-    farm_size = round(random.uniform(1, 100), 2)
+# Function to predict price based on user input
+def predict_price(user_input):
+    # Convert user input into a DataFrame
+    user_df = pd.DataFrame([user_input])
 
-    # Prepare the input data as a DataFrame
-    input_data = pd.DataFrame({
-        'Production': [production],
-        'Consumption': [consumption],
-        'Rainfall': [rainfall],
-        'Temperature': [temperature],
-        'Fertilizer_Usage': [fertilizer_usage],
-        'Irrigated_Area': [irrigated_area],
-        'Pesticide_Usage': [pesticide_usage],
-        'Soil_Quality': [soil_quality],
-        'Market_Demand': [market_demand],
-        'Government_Support': [government_support],
-        'Farm_Size': [farm_size]
-    })
-    
-    # Predict the price using the loaded model
-    predicted_price = model.predict(input_data)
-    
-    return round(predicted_price[0], 2)
+    # Convert categorical variables to numerical using one-hot encoding
+    user_df = pd.get_dummies(user_df, columns=['State', 'Product'])
 
-# Example usage
-if __name__ == "__main__":
-    state = 'Punjab'
-    product = 'Wheat'
-    year = 2024
-    
-    predicted_price = predict_price(state, product, year)
-    print(f"Predicted Price for {product} in {state} for the year {year}: {predicted_price}")
+    # Align with the training data (this ensures all columns match)
+    user_df = user_df.reindex(columns=columns, fill_value=0)
+
+    # Feature Scaling
+    user_df_scaled = scaler.transform(user_df)
+
+    # Predict the price
+    predicted_price = model.predict(user_df_scaled)
+
+    return predicted_price[0]
+
+# Example user input for predicting the price in 2024
+user_input = {
+    'State': 'Karnataka',
+    'Product': 'Rice',
+    'Year': 2024,
+    'Production': 3200,
+    'Consumption': 2700,
+    'Expected_Price': 88.0,
+    'Rainfall': 1100,
+    'Temperature': 28,
+    'Fertilizer_Usage': 210,
+    'Irrigated_Area': 65,
+    'Pesticide_Usage': 22,
+    'Soil_Quality': 7.5,
+    'Market_Demand': 115,
+    'Government_Support': 3500,
+    'Farm_Size': 22
+}
+
+# Predict price based on user input for 2024
+predicted_price = predict_price(user_input)
+print(f'Predicted Price for 2024: {predicted_price}')
