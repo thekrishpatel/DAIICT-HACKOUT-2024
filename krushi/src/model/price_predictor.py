@@ -3,7 +3,7 @@ import random
 import joblib
 
 # Load the trained model
-model = joblib.load('model/polynomial_price_predictor.pkl')
+model = joblib.load('src/model/polynomial_price_predictor.pkl')
 
 def predict_price(state, product, year):
     # Generate random data for the other features
