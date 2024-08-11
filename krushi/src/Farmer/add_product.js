@@ -62,7 +62,7 @@ const AddProduct = () => {
                         />
                     </div>
                 ))}
-                <button type="submit">Predict Price</button>
+                <button className='btn2' type="submit">Predict Price</button>
             </form>
         </div>
     );

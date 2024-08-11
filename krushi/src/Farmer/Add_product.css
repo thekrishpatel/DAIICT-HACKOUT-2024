@@ -58,13 +58,13 @@ input[type="text"]:focus {
 }
 
 /* Submit button styling */
-button[type="submit"] {
-    background-color: #CB9725; /* Global color */
+.btn2 {
+    background-color: #CB9725; 
     color: #ffffff;
-    padding: 8px 12px; /* Adjusted padding for button */
+    padding: 8px 12px; 
     border: none;
     border-radius: 6px;
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px; 
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -74,12 +74,12 @@ button[type="submit"] {
     margin-left: 300px;
 }
 
-button[type="submit"]:hover {
+.btn2:hover {
     background-color: #a87f1e; /* Darker shade of global color */
     transform: scale(1.03); /* Slightly reduced scale for hover effect */
 }
 
-button[type="submit"]:active {
+.btn2:active {
     background-color: #8b6c1b; /* Even darker shade for active state */
     transform: scale(1);
 }

@@ -1,4 +1,5 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './FarmerSignUp.css';
 
 const stateCityMapping = {
@@ -138,6 +139,7 @@ const stateCityMapping = {
 };
 
 
+
 function FarmerSignUp() {
     const [email, setEmail] = useState('');
     const [contactNumber, setContactNumber] = useState('');
@@ -147,7 +149,7 @@ function FarmerSignUp() {
     const [lastname, setLastname] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
-
+    const [role, setRole] = useState('Farmer');
     const [isFormValid, setIsFormValid] = useState(false);
 
     useEffect(() => {
@@ -172,13 +174,31 @@ function FarmerSignUp() {
         setCity(''); // Reset city when state changes
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
-        console.log('Farmer Details:', { firstname, lastname, email, contactNumber, password, city, state });
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/signup', {
+                firstname,
+                lastname,
+                email,
+                contactNumber,
+                password,
+                city,
+                state,
+                role
+            });
+            console.log('Farmer registered:', response.data);
+            alert('Registration successful!');
+            window.location.href = '/home';
+        } catch (error) {
+            console.error('Error registering farmer:', error);
+            alert('Registration failed!');
+        }
     };
 
     return (
@@ -324,7 +344,15 @@ function FarmerSignUp() {
                             </select>
                         </div>
                     </div>
-                    <button className="btn" type="submit" disabled={!isFormValid}>
+                    <div className="row">
+                        <div className="input-box">
+                            <select value={role} onChange={(e) => setRole(e.target.value)} required>
+                                <option value="Farmer">Farmer</option>
+                                <option value="Bidder">Bidder</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button className="btn1" type="submit" disabled={!isFormValid}>
                         Sign Up
                     </button>
                     <div className="login-register">

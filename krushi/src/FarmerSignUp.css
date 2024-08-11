@@ -88,8 +88,8 @@ form {
     color: #666;
 }
 
-.btn {
-    width: 100%;
+.btn1 {
+    /* width: 100%; */
     padding: 10px;
     margin-top: 16px;
     background-color: #162938; /* Consistent theme color for the button */
@@ -100,12 +100,12 @@ form {
     font-size: 16px;
     transition: background-color 0.3s;
 }
-.btn:disabled,.btn:disabled:hover {
+.btn1:disabled,.btn1:disabled:hover {
     background-color: #8d8d8d;
     cursor: not-allowed;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: #0a1c28; /* Darker shade on hover for visual feedback */
 }
 

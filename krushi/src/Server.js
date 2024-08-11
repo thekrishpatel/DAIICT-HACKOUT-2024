@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/yourdb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/krushi', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const ProductSchema = new mongoose.Schema({
     // Define your schema here
@@ -49,5 +49,58 @@ app.get('/predict/:id', async (req, res) => {
     }
 });
 
-// Start the server
-app.listen(5000, () => console.log('Server running on port 5000'));
+const cors = require('cors');
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+const db = mongoose.connection;
+db.on('error', (err) => console.error(err));
+db.once('open', () => console.log('Connected to MongoDB'));
+
+// Schema and Model
+const farmerSchema = new mongoose.Schema({
+    firstname: String,
+    lastname: String,
+    email: String,
+    contactNumber: String,
+    password: String,
+    city: String,
+    state: String,
+    role: String
+});
+const bidderSchema = new mongoose.Schema({
+    firstname: String,
+    lastname: String,
+    email: String,
+    contactNumber: String,
+    password: String,
+    city: String,
+    state: String,
+    role: String
+});
+
+const Farmer = mongoose.model('Farmer', farmerSchema);
+const Bidder = mongoose.model('Bidder', bidderSchema);
+
+// Routes
+app.post('/api/signup', async (req, res) => {
+    try {
+        if (req.body.role == 'Farmer') {
+            const farmer = new Farmer(req.body);
+            await farmer.save();
+            res.status(201).json(farmer);
+        }
+        else if (req.body.role == 'Bidder') {
+            const bidder = new Bidder(req.body);
+            await bidder.save();
+            res.status(201).json(bidder);
+        }
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
