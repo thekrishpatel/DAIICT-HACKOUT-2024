@@ -1,0 +1,145 @@
+/* General Styling */
+.home-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Section Styling */
+.news-section, .schemes-section {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+.news-section {
+    overflow-y: auto; /* Make news section scrollable */
+    max-height: 500px; /* Set a fixed height for scrolling */
+}
+
+.news-section h1, .schemes-section h1 {
+    color: #CB9725; /* Fixed global color */
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-align: center;
+    position: relative;
+}
+
+.news-section h1::after, .schemes-section h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #CB9725; /* Fixed global color */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Homebox Styling */
+.homebox {
+    border: 1px solid #CB9725; /* Fixed global color */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    animation: fadeIn 0.8s ease-out; /* Apply animation */
+    transition: transform 0.3s ease; /* Add transition for hover effect */
+}
+
+.homebox:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+.homebox-body {
+    padding: 10px;
+}
+
+.homebox h4 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+.homebox a {
+    text-decoration: none;
+    color: #CB9725; /* Fixed global color */
+    font-weight: bold;
+}
+
+.homebox a:hover {
+    text-decoration: underline;
+}
+
+.leftarrow {
+    margin-right: 8px;
+    color: #CB9725; /* Fixed global color */
+}
+
+/* Footer */
+.footer {
+    background-color: #CB9725; /* Fixed global color */
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto; /* Stick footer at the bottom */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #CB9725; /* Fixed global color */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 150px;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center; /* Center align items vertically */
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
