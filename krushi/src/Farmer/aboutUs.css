@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .about-us-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+  }
+  
+  .intro h2,
+  .mission h3,
+  .vision h3,
+  .unique-value h3,
+  .benefits h3,
+  .sustainability h3,
+  .community h3,
+  .technology h3,
+  .success-stories h3,
+  .contact h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+  ul li {
+    margin-bottom: 5px;
+  }
+  
+  strong {
+    color: #CB9725; /* Consistent color theme */
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #CB9725;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #CB9725;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .logo img {
+    width: 50px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+    }
+    .nav-links li {
+      margin: 10px 0;
+    }
+  
+    .content {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar .logo img {
+      width: 40px;
+    }
+  
+    .nav-links a {
+      font-size: 16px;
+    }
+  
+    .content {
+      padding: 10px;
+    }
+  }
+  
